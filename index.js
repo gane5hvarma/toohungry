@@ -35,19 +35,7 @@ app.use("/auth",auth);
 var routes=require("./routes/routes");
 app.use("/",routes);
 
-// app.get("/",function(req,res){
-//   if(req.session.username){
-//     return res.render("views/user.handlebars",{
-//       name:req.session.username
-//     })
 
-//   }
-//   else{
-//     console.log("asd")
-//     return res.sendFile(path.join(__dirname,"views/public/home.html"));
-//   }
-//   // res.render("./public/index.html");
-// })
 
 
 
