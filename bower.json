@@ -1,0 +1,16 @@
+{
+  "name": "toohungry",
+  "description": "online-food-delivery",
+  "main": "index.js",
+  "authors": [
+    "gane5hvarma <raghavag772@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "components-font-awesome": "^5.0.6",
+    "bootstrap-social": "^5.1.1"
+  }
+}

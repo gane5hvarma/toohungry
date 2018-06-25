@@ -1,0 +1,15 @@
+body{
+  background-color: #1598dc;
+  margin:0px;
+}
+#logo{
+  /* color:black; */
+  border:50%;
+  height:10%;
+  width:10%;
+
+  border-radius: 50%;
+
+  border-color: black;
+
+}

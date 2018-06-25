@@ -1,0 +1,9 @@
+for html  css responsive design - https://internetingishard.com/
+bootstrap- https://getbootstrap.com/
+font-awesome - https://fontawesome.com/
+
+
+use codepen its a online editor
+
+use toDateString() to convert Date object to date String
+use toTimeString() to convert Date object to date String
