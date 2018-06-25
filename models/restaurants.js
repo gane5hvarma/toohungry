@@ -3,7 +3,9 @@ var Schema=mongoose.Schema;
 var itemSchema=new Schema({
     itemName:String,
     itemType:String,
-    itemCost:Number
+    itemPicture:String,
+    itemCost:Number,
+    itemPicture:String
 })
 var restaurantSchema=new Schema({
     name:String,

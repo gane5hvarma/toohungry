@@ -17,17 +17,22 @@ router.get("/", function (req, res) {
 var restaurants=require("../models/restaurants");
 router.get("/restaurants",function(req,res){
 
-    var promise=restaurants.find().exec()
+    let promise=restaurants.find().exec()
     promise.then(function(doc){
         return res.render(path.join(__dirname, "../views/restaurants.handlebars"),{
-            restaurants: doc
+            restaurants: doc.name
         });
 
     })
 router.get("/restaurants/:restaurant",function(req,res){
-    res.render("items.handlebars"{
-        items:items
-    });
+    let promise=restaurant.find({name:req.params.restaurant}).exec()
+    promise.then(function(doc){
+        res.render("items.handlebars" {
+            items: doc.items
+        });
+
+    })
+    
       
 })
     

@@ -5,6 +5,7 @@ var userLogSchema=new schema({
   googleId:String,
   email:String,
   displayPicture:String,
+  mobile:String,
   date:{type:Date,default:Date.now()}
 
 })
