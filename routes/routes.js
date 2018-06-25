@@ -26,7 +26,7 @@ router.get("/restaurants",function(req,res){
     });
 });
 router.get("/restaurants/:restaurant",function(req,res){
-    let promise=restaurant.find({name:req.params.restaurant}).exec()
+    let promise=restaurant.find({name:req.params.restaurant}).exec();
     promise.then(function(doc){
         res.render(path.join(__dirname, "../views/items.handlebars"), {
             items: doc.items
