@@ -25,10 +25,9 @@ router.get("/google/redirect",passport.authenticate('google',{
         else{
           console.log(req.session)
           res.redirect("/restaurants");
+        }
       }
-      
-
-
-})
+      );
 
 module.exports=router
+
