@@ -21,11 +21,11 @@ passport.use(new googleStrategy({
   clientSecret:credentials.google.clientSecret,
   callbackURL:credentials.google.callbackURL
 },function(accessToken,refreshToken,profile,done){
-    console.log(profile)
-    console.log(new Date())
+
     if(profile._json.domain==="hyderabad.bits-pilani.ac.in")
       User.findOne({googleId:profile.id},function(err,user){
         if(user){
+          user.count=user.count+1;
           done(null,user)
         }
         else{

@@ -9,7 +9,6 @@ router.get("/", function (req, res) {
         })
 
     } else {
-        console.log("asd")
         return res.sendFile(path.join(__dirname, "../views/public/home.html"));
     }
     // res.render("./public/index.html");

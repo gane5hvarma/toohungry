@@ -23,7 +23,8 @@ router.get("/google/redirect",passport.authenticate('google',{
           res.redirect("/");
         }
         else{
-          console.log(req.session)
+          
+          console.log(res)
           res.redirect("/restaurants");
         }
       }

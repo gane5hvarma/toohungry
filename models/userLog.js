@@ -6,7 +6,8 @@ var userLogSchema=new schema({
   email:String,
   displayPicture:String,
   mobile:String,
-  date:{type:Date,default:Date.now()}
+  date:{type:Date,default:Date.now()},
+  count:{type:Number,default:1}
 
 })
 var userModel=mongoose.model("userLogs",userLogSchema)
