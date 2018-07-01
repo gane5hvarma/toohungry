@@ -30,10 +30,13 @@ app.use(expressSession({
 
 
 //auth route
-var auth = require('./routes/auth'); //auth route
+const auth = require('./routes/auth'); //auth route
 app.use("/auth",auth);
+//adminRoutes
+const adminRoutes= require("./admin/routes");
+app.use("/admin",adminRoutes);
 //routes
-var routes=require("./routes/routes");
+const routes=require("./routes/routes");
 app.use("/",routes);
 
 

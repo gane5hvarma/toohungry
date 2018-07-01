@@ -18,13 +18,12 @@ router.get("/google/redirect",passport.authenticate('google',{
     }),function(req,res){
         req.session.username=req.user.username
         if(req.user==="Not_BitsHyd"){
-          req.session.username=req.user.username
-          
           res.redirect("/");
         }
+        else if(req.user==="admin"){
+          res.redirect("/admin");
+        }
         else{
-          
-          console.log(res)
           res.redirect("/restaurants");
         }
       }

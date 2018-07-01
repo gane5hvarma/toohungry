@@ -22,7 +22,10 @@ passport.use(new googleStrategy({
   callbackURL:credentials.google.callbackURL
 },function(accessToken,refreshToken,profile,done){
 
-    if(profile._json.domain==="hyderabad.bits-pilani.ac.in")
+    if(profile._json.domain==="hyderabad.bits-pilani.ac.in"){
+      if(profile.emails[0].value==="f20150284@hyderabad.bits-pilani.ac.in"){
+        done(null,"admin");
+      }
       User.findOne({googleId:profile.id},function(err,user){
         if(user){
           user.count=user.count+1;
@@ -41,11 +44,12 @@ passport.use(new googleStrategy({
         }
 
       })
+    }
     else{
       console.log("not a bits-pilani user")
       done(null,"Not_BitsHyd")
     }
 
   }
-  )
+)
 );
