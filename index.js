@@ -2,10 +2,13 @@ const express=require("express");
 const path=require("path")
 const app=express();
 const port=process.env.PORT||3000;
-const passport=require("passport")
+require("dotenv").config();
+
+
 // database connection
 const mongoose=require("mongoose")
-mongoose.connect("mongodb://localhost:27017/toohungry")
+const db_connection = process.env.db_connection || "mongodb://localhost:27017/toohungry";
+mongoose.connect(db_connection);
 
 const credentials=require("./config/credentials.js")
 
@@ -24,7 +27,7 @@ var expressSession=require("express-session")
 
 
 app.use(expressSession({
-  secret: credentials.cookie.secretKey
+  secret: process.env.cookie_secretKey || credentials.cookie.secretKey
 }))
 
 

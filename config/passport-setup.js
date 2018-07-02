@@ -9,9 +9,9 @@ var credentials=require("./credentials.js")
 
 //google auth
 passport.use(new googleStrategy({
-  clientID:credentials.google.clientID,
-  clientSecret:credentials.google.clientSecret,
-  callbackURL:credentials.google.callbackURL
+  clientID: process.env.google_clientID || credentials.google.clientID,
+  clientSecret: process.env.google_clientSecret || credentials.google.clientSecret,
+  callbackURL: process.env.google_callbackURL || credentials.google.callbackURL
 },function(accessToken,refreshToken,profile,done){
 
     if(profile._json.domain==="hyderabad.bits-pilani.ac.in"){
@@ -21,7 +21,7 @@ passport.use(new googleStrategy({
       User.findOne({googleId:profile.id},function(err,user){
         
         if(user){
-          console.log(user)
+          
           user.count=user.count+1;
           user.save((err,updatedUser)=>{
             done(null,updatedUser)
@@ -42,7 +42,7 @@ passport.use(new googleStrategy({
       })
     }
     else{
-      console.log("not a bits-pilani user")
+    
       done(null,"Not_BitsHyd")
     }
 
