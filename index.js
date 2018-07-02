@@ -1,13 +1,13 @@
 const express=require("express");
-var path=require("path")
+const path=require("path")
 const app=express();
-var port=3000
-var passport=require("passport")
+const port=process.env.PORT||3000;
+const passport=require("passport")
 // database connection
-var mongoose=require("mongoose")
+const mongoose=require("mongoose")
 mongoose.connect("mongodb://localhost:27017/toohungry")
 
-var credentials=require("./config/credentials.js")
+const credentials=require("./config/credentials.js")
 
 //static files
 app.use(express.static(path.join(__dirname,"views")))
@@ -24,7 +24,7 @@ var expressSession=require("express-session")
 
 
 app.use(expressSession({
-  secret:credentials.cookie.secretKey
+  secret: credentials.cookie.secretKey
 }))
 
 

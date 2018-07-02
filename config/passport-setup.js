@@ -5,15 +5,7 @@ var mongodb=require("mongodb")
 var express=require("express")
 var User=require("../models/userLog.js")
 var credentials=require("./credentials.js")
-// passport.serializeUser(function(user,done){
-//   done(null,user.id)
-// })
-// passport.deserializeUser(function(id,done){
-//   User.findById(id,function(err,user){
-//     done(null.user.id)
-//   })
-//
-// })
+
 
 //google auth
 passport.use(new googleStrategy({
@@ -27,9 +19,13 @@ passport.use(new googleStrategy({
         done(null,"admin");
       }
       User.findOne({googleId:profile.id},function(err,user){
+        
         if(user){
+          console.log(user)
           user.count=user.count+1;
-          done(null,user)
+          user.save((err,updatedUser)=>{
+            done(null,updatedUser)
+          })
         }
         else{
           new User({
