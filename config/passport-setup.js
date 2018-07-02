@@ -5,21 +5,13 @@ var mongodb=require("mongodb")
 var express=require("express")
 var User=require("../models/userLog.js")
 var credentials=require("./credentials.js")
-// passport.serializeUser(function(user,done){
-//   done(null,user.id)
-// })
-// passport.deserializeUser(function(id,done){
-//   User.findById(id,function(err,user){
-//     done(null.user.id)
-//   })
-//
-// })
+
 
 //google auth
 passport.use(new googleStrategy({
-  clientID:credentials.google.clientID,
-  clientSecret:credentials.google.clientSecret,
-  callbackURL:credentials.google.callbackURL
+  clientID: process.env.google_clientID || credentials.google.clientID,
+  clientSecret: process.env.google_clientSecret || credentials.google.clientSecret,
+  callbackURL: process.env.google_callbackURL || credentials.google.callbackURL
 },function(accessToken,refreshToken,profile,done){
 
     if(profile._json.domain==="hyderabad.bits-pilani.ac.in"){
@@ -27,9 +19,13 @@ passport.use(new googleStrategy({
         done(null,"admin");
       }
       User.findOne({googleId:profile.id},function(err,user){
+        
         if(user){
+          
           user.count=user.count+1;
-          done(null,user)
+          user.save((err,updatedUser)=>{
+            done(null,updatedUser)
+          })
         }
         else{
           new User({
@@ -46,7 +42,7 @@ passport.use(new googleStrategy({
       })
     }
     else{
-      console.log("not a bits-pilani user")
+    
       done(null,"Not_BitsHyd")
     }
 

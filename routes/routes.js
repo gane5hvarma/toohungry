@@ -17,6 +17,8 @@ router.get("/restaurants/:restaurant",function(req,res){
             }
          );
 
+    }).catch((err)=>{
+        res.send("error")
     })
     
       

@@ -4,10 +4,12 @@ const display=(req,res)=>{
     restaurantsHelper.list().then((data)=>{
         if(_.isEmpty(data)){
             res.send("no restaurants")
-        }    // commit out after adding restaurants    
+        }    // commit out after adding restaurants
+        else{    
          res.render(path.join(__dirname, "../views/restaurants.handlebars"), {
              restaurants: data.name
          })
+        }
     }).catch((err)=>{
          res.status(500).send("error");
     })

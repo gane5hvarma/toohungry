@@ -1,13 +1,16 @@
 const express=require("express");
-var path=require("path")
+const path=require("path")
 const app=express();
-var port=3000
-var passport=require("passport")
-// database connection
-var mongoose=require("mongoose")
-mongoose.connect("mongodb://localhost:27017/toohungry")
+const port=process.env.PORT||3000;
+require("dotenv").config();
 
-var credentials=require("./config/credentials.js")
+
+// database connection
+const mongoose=require("mongoose")
+const db_connection = process.env.db_connection || "mongodb://localhost:27017/toohungry";
+mongoose.connect(db_connection);
+
+const credentials=require("./config/credentials.js")
 
 //static files
 app.use(express.static(path.join(__dirname,"views")))
@@ -24,7 +27,7 @@ var expressSession=require("express-session")
 
 
 app.use(expressSession({
-  secret:credentials.cookie.secretKey
+  secret: process.env.cookie_secretKey || credentials.cookie.secretKey
 }))
 
 
