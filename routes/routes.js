@@ -5,6 +5,7 @@ const mongoose=require("mongoose");
 const user=require("../controllers/user.controller.js");
 const restaurants=require("../controllers/restaurants.controller.js");
 const _= require("underscore");
+const cart = require('./../controllers/cart.controller');
 
 router.get("/",user.login);
 
@@ -27,14 +28,10 @@ router.get("/restaurants/:restaurant",function(req,res){
             items: doc.items
             }
          );
+    }) 
+});
 
-    }).catch((err)=>{
-        res.send("error")
-    })
-    
-      
-})
-    
+router.get('/cart', cart.display);
     
    
 
