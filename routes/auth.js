@@ -3,11 +3,38 @@ var express=require("express")
 var router=express.Router()
 const passport = require("passport")
 const passportStrategy=require('../config/passport-setup.js')
+const _= require("underscore");
 
-router.get("/google",passport.authenticate('google',{
+router.get("/google",(req,res,next)=>{
+  if(_.isEmpty(req.session.username)){
+    next();
+  }
+  else{
+    res.redirect("/restaurants");
+  }
+},passport.authenticate('google',{
   scope:['profile','email']
-}))
-router.get("/google/redirect",passport.authenticate('google',{
+}));
+
+
+router.get("/google/redirect",(req,res,next)=>{
+  if (_.isEmpty(req.session.username)) {
+    if(_.isEmpty(req.session.admin)){
+      next();
+    }
+    else{
+      delete req.session.admin;
+      next();
+    }
+  }
+  else {
+    delete req.session.username;
+    next();
+    
+  }
+  
+
+  },passport.authenticate('google',{
     failureRedirect:"/auth/google",
 
     session:false
