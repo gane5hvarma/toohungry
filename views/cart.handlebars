@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>toohungry | Cart</title>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+    <form class="container-fluid" method="POST" action="order" id="cart-form">
+        <div class="row">
+            <div class="offset-md-1 col-md-10">
+                {{#each cartItems}}
+                    {{>cart-item this}}
+                {{/each}}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <ul class="list-group offset-md-8 col-md-3">
+                <li class="list-group-item active"><h5>CART SUMMARY</h5></li>
+                <li class="list-group-item">
+                    <h6>TOTAL<span id="cart-total" class="float-right"></span></h6>
+                </li>
+                <li class="list-group-item">
+                    <button type="submit" class="btn btn-primary" id="cart-submit-btn">PLACE ORDER</button>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <script src="scripts/cart.js"></script>
+</body>
+</html>
