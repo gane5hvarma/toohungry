@@ -4,8 +4,18 @@ const path=require("path");
 const mongoose=require("mongoose");
 const user=require("../controllers/user.controller.js");
 const restaurants=require("../controllers/restaurants.controller.js");
+const _= require("underscore");
 
 router.get("/",user.login);
+
+router.use((req,res,next) => {
+    if (!_.isEmpty(req.session.username)) {
+        next()
+    } else {
+        res.send("you cant access the normal user facilites because you'r an admin :p,will add this functionality later");
+    }
+});
+
 router.get("/logout",user.logut);
 
 router.get("/restaurants",restaurants.display);
