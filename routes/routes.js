@@ -7,6 +7,7 @@ const restaurants=require("../controllers/restaurants.controller.js");
 
 router.get("/",user.login);
 router.get("/logout",user.logut);
+
 router.get("/restaurants",restaurants.display);
 
 router.get("/restaurants/:restaurant",function(req,res){

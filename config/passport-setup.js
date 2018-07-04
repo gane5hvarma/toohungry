@@ -18,6 +18,7 @@ passport.use(new googleStrategy({
       if(profile.emails[0].value==="f20150284@hyderabad.bits-pilani.ac.in"){
         done(null,"admin");
       }
+      else{
       User.findOne({googleId:profile.id},function(err,user){
         
         if(user){
@@ -41,6 +42,7 @@ passport.use(new googleStrategy({
 
       })
     }
+  }
     else{
     
       done(null,"Not_BitsHyd")

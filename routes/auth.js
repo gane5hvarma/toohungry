@@ -16,12 +16,16 @@ router.get("/google/redirect",passport.authenticate('google',{
         if(req.user==="Not_BitsHyd"){
           res.redirect("/");
         }
-        else if(req.user==="admin"){
-          req.session.admin="admin"
-          res.redirect("/admin");
-        }
         else{
-          res.redirect("/restaurants");
+          if(req.user==="admin"){
+            console.log("im here in admin")
+            req.session.admin="admin"
+            res.redirect("/admin");
+          }
+          else{
+            console.log("im not in admin")
+            res.redirect("/restaurants");
+          }
         }
       }
       );
