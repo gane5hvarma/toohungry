@@ -11,6 +11,7 @@ var restaurantSchema=new Schema({
     name:String,
     address:String,
     mobile:Number,
+    picture:String,
     items:[itemSchema]
 });
 var restaurantModel=mongoose.model("restaurants",restaurantSchema);
