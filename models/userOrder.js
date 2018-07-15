@@ -5,7 +5,7 @@ var orderSchema=new Schema({
     restaurant:String,
     itemCost:Number,
     itemType:String,
-    itemPicture:String
+    itemImage:String
 
 })
 var userOrdersSchema=new Schema({

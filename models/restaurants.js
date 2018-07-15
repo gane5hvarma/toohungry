@@ -3,15 +3,18 @@ var Schema=mongoose.Schema;
 var itemSchema=new Schema({
     itemName:String,
     itemType:String,
-    itemPicture:String,
-    itemCost:Number
+    itemImage:String,
+    itemCost:Number,
+    itemClicks:Number
+
   
 })
 var restaurantSchema=new Schema({
     name:String,
     address:String,
     mobile:Number,
-    picture:String,
+    image:String,
+    restaurantClicks:Number,
     items:[itemSchema]
 });
 var restaurantModel=mongoose.model("restaurants",restaurantSchema);

@@ -23,7 +23,7 @@ router.get("/addRestaurants",(req,res)=>{
 });
 router.post("/addRestaurants",(req,res)=>{
     console.log(req.body)
-    new restaurants({name:req.body.name,address:req.body.address,mobile:req.body.mobile})
+    new restaurants({name:req.body.name,address:req.body.address,mobile:req.body.mobile,image:req.body.image})
     .save()
     .then((restaurant)=>{
         res.send("succesfull added " + restaurant.name + "to database go back and add another restaurant");
@@ -48,7 +48,7 @@ router.get("/addItems",(req,res)=>{
 
 });
 router.post("/addItems",(req,res)=>{
-    restaurants.findOne((err,data)=>{
+    restaurants.findOne({name:req.body.name},(err,data)=>{
         if(err){
             res.send("cant find restaurant");
         }
@@ -57,8 +57,10 @@ router.post("/addItems",(req,res)=>{
             let itemDetails={
                 itemName:req.body.itemName,
                 itemType:req.body.itemType,
-                itemCost:req.body.itemCost
+                itemCost:req.body.itemCost,
+                itemImage:req.body.itemImage
             }
+            console.log(data.items)
             data.items=data.items.push(itemDetails)
             restaurants.update({name:restaurant},{items:data.items},(err,data)=>{
               
