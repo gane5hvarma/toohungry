@@ -40,6 +40,8 @@ router.get("/google/redirect",(req,res,next)=>{
     session:false
     }),function(req,res){
         req.session.username=req.user.username
+        req.session.email=req.user.email
+        req.session.displayPictureUrl=req.user.displayPictureUrl
         if(req.user==="Not_BitsHyd"){
           res.redirect("/");
         }

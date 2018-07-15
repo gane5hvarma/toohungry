@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://localhost:3000/views/public/scripts/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/views/public/scripts/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/views/public/scripts/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/views/public/scripts/fonts/themify/themify-icons.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/views/public/scripts/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/views/public/scripts/fonts/elegant-font/html-css/style.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/views/public/scripts/css-hamburgers/hamburgers.min.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/views/public/css/util.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/views/public/css/main.css">
+        
         <style>
             @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
 
@@ -17,20 +26,13 @@
             }
             
             .wrapper {
+                
                 display: table;
-                height: 100%;
                 width: 100%;
+                padding-top: 20px;
+                z-index: auto;
             }
-
-            .container-fostrap {
-                display: table-cell;
-                padding: 1em;
-                text-align: center;
-                vertical-align: middle;
-            }
-            .fostrap-logo {
-                width: 100px;
-                margin-bottom:15px
+    
             }
             h1.heading {
                 color: #fff;
@@ -56,7 +58,7 @@
             }
             } 
             .card {
-                display: block; 
+                display: block; margin-bottom: 20px;
                 margin-bottom: 20px;
                 line-height: 1.42857143;
                 background-color: #fff;
@@ -90,53 +92,194 @@
                 font-weight: 700;
                 font-size: 1.65em;
             }
-            .card-title a {
-                color: #000;
-                text-decoration: none !important;
-            }
-            .card-read-more {
-                
-            }
-            .card-read-more a {
-                text-decoration: none !important;
-                padding:10px;
-                font-weight:600;
-                text-transform: uppercase
-            }
+           
         </style>
     </head>
     <body>
-        <section class="wrapper">
-            <div class="container-fostrap">
-                
-                <div class="content">
-                    <div class="container">
-                        <div class="row">
-                            {{#each restaurants}}
-                            <div class="col-xs-12 col-sm-4">
-                                <div class="card">
-                                    <a class="img-card" href="./public/images/restaurants/{{name}}.jpg">
-                                        <img src="./public/images/restaurants/{{name}}.jpg" />
-                                    </a>
-                                    <div class="card-content">
-                                        <h4 class="card-title">
-                                            <a href="./public/images/restaurants/{{name}}.jpg"> {{name}}
-                                            </a>
-                                        </h4>
-                                
+       
+        <header >
+            <!-- Header desktop -->
+            <div >
+        
+        
+                <div class="wrap_header">
+                    <!-- Logo -->
+                    <a href="index.html" class="logo">
+                        <img src="http://localhost:3000/views/public/images/logo/logo.jpg" alt="IMG-LOGO">
+                    </a>
+        
+                   
+                    <div class="header-icons">
+                        <a href="#" class="header-wrapicon1 dis-block">
+                            <img src={{userDisplayPicture}} class="header-icon1" alt="ICON">
+                        </a>
+        
+                        <span class="linedivide1"></span>
+                        
+                        <div class="header-wrapicon2">
+                            <img src="http://localhost:3000/views/public/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                            <span class="header-icons-noti">{{cartQuantity}}</span>
+        
+        
+                            <div class="header-cart header-dropdown">
+                                <ul class="header-cart-wrapitem">
+                                    
+                                </ul>
+        
+                                <div class="header-cart-total">
+                                    Total: $75.00
+                                </div>
+        
+                                <div class="header-cart-buttons">
+                                    <div class="header-cart-wrapbtn">
+        
+                                        <a href="http://localhost:3000/viewCartItems" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                            View Cart
+                                        </a>
                                     </div>
-                                   
                                 </div>
                             </div>
-                            {{/each}}
-                            
-                            
-
+        
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </header>
+        
+            <!-- Header Mobile -->
+            <div class="wrap_header_mobile">
+                <!-- Logo moblie -->
+                <a href="index.html" class="logo-mobile">
+                    <img src="images/icons/logo.png" alt="IMG-LOGO">
+                </a>
+        
+                <!-- Button show menu -->
+                <div class="btn-show-menu">
+                    <!-- Header Icon mobile -->
+                    <div class="header-icons-mobile">
+                        <a href="#" class="header-wrapicon1 dis-block">
+                            <img src="public/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+                        </a>
+        
+                        <span class="linedivide2"></span>
+        
+                        <div class="header-wrapicon2">
+                            <img src="public/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                            <span class="header-icons-noti">{{cartQuantity}}</span>
+        
+                            <!-- Header cart noti -->
+                            <div class="header-cart header-dropdown">
+                                <ul class="header-cart-wrapitem">
+                                  
+                                </ul>
+        
+                                <div class="header-cart-total">
+                                    Total: $75.00
+                                </div>
+        
+                                <div class="header-cart-buttons">
+                                    <div class="header-cart-wrapbtn">
+                                
+                                        <a href="http://localhost:3000/viewCartItems" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                            View Cart
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    
+                </div>
+            </div>
+            <section class="wrapper">
+                <div class="container-fostrap">
+            
+                    <div class="content" style="margin-top:100px;">
+                        <div class="container">
+                            <div class="row">
+                                {{#each restaurants}}
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="card">
+                                        <a class="img-card" href="/restaurants/{{name}}">
+                                            <img src="{{image}}" />
+                                        </a>
+                                        <div class="card-content">
+                                            <h4 class="card-title">
+                                                <a href="/restaurants/{{name}}"> {{name}}
+                                                </a>
+                                            </h4>
+            
+                                        </div>
+            
+                                    </div>
+                                </div>
+                                {{/each}}
+            
+            
+            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+        
+        
+            <footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
+                <div class="flex-w p-b-90">
+                    <div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
+                        <h4 class="s-text12 p-b-30">
+                            
+                        </h4>
+        
+                        <div>
+                            <p class="s-text7 w-size27">
+                                Any issuses? Let us know ph.no 9100878305
+                            </p>
+        
+                            <div class="flex-m p-t-30">
+                                <a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
+                                <a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
+                                <a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
+                                <a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
+                                <a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
+                            </div>
+                        </div>
+                    </div>
+        
+                   
+        
+                    
+        
+                   
+                    <div class="w-size8 p-t-30 p-l-15 p-r-15 respon3">
+                        <h4 class="s-text12 p-b-30">
+                            Enquiries
+                        </h4>
+        
+                        <form>
+                            <div class="effect1 w-size9">
+                                <input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@example.com">
+                                <span class="effect1-line"></span>
+                            </div>
+        
+                            <div class="w-size2 p-t-20">
+                              
+                                <button class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
+                                    Send
+                                </button>
+                            </div>
+        
+                        </form>
+                    </div>
+                </div>
+        
+        
+            </footer>
+            <script type="text/javascript" src="http://localhost:3000/views/public/scripts/jquery/dist/jquery.min.js"> </script>
+            <script type="text/javascript" src="http://localhost:3000/views/public/scripts/sweetalert/sweetalert.min.js"> </script>
+            <script type="text/javascript" src="http://localhost:3000/views/public/scripts/custom/cart.js"></script>
 
     </body>
 </html>

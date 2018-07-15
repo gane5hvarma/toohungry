@@ -33,7 +33,7 @@ passport.use(new googleStrategy({
             username:profile.displayName,
             googleId:profile.id,
             email:profile.emails[0].value,
-            displayPicture:profile.photos[0].value,
+            displayPictureUrl:profile.photos[0].value,
             date:new Date()
           }).save().then(function(newUser){
             done(null,newUser)
