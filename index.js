@@ -13,19 +13,24 @@ mongoose.connect(db_connection);
 const credentials=require("./config/credentials.js")
 
 //static files
-app.use(express.static(path.join(__dirname,"views")))
 app.use(express.static(__dirname))
-
+app.use(express.static(path.join(__dirname,"views")))
 app.use(express.static(path.join(__dirname, "views/public")))
+
 
 
 //view engine handlebars
 var hbs=require("express-handlebars")
+
 app.set('views', path.join(__dirname));
 app.engine("handlebars",hbs({defaultLayout: null}))
 app.set("view engine","handlebars")
 
+
+//express-session
 var expressSession=require("express-session")
+
+
 //body-parser
 const bodyParser=require("body-parser");
 app.use(bodyParser.urlencoded({extended:false}))
