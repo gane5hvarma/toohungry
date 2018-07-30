@@ -12,10 +12,14 @@ const login=(req,res)=>{
         res.status(200).sendFile(path.join(__dirname, "../views/public/home.html"));
     } 
 }
-const logut=(req,res)=>{
+const logout=(req,res)=>{
+    console.log(req)
+    delete req.session.username;
+    delete req.session.email;
+    res.redirect("/");
 
 }
 module.exports={
     login:login,
-    logut:logut
+    logout:logout
 }

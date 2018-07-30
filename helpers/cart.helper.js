@@ -106,12 +106,17 @@ const getCartQuantity=(userEmail)=>{
         let promise=cartQuery.exec();
         let CartQuantity=0;
         promise.then((data)=>{
-            async.forEach(data.items,(item,callback)=>{
-                CartQuantity=CartQuantity+item.itemQuantity;
-                callback();
-            },()=>{
+            if(data==null){
                 resolve(CartQuantity);
-            })
+            }
+            else{
+                async.forEach(data.items,(item,callback)=>{
+                    CartQuantity=CartQuantity+item.itemQuantity;
+                    callback();
+                },()=>{
+                    resolve(CartQuantity);
+                })
+            }
 
             
         }).catch((err)=>{
@@ -120,9 +125,33 @@ const getCartQuantity=(userEmail)=>{
     })
 }
 
+const removeItemInCart=(userEmail,body)=>{
+    return new Promise((resolve,reject)=>{
+        let cartQuery=cart.findOne({userEmail:userEmail});
+        let promise=cartQuery.exec();
+        promise.then((data)=>{
+            let items=data.items;
+            let updatedItems=_.reject(items,(item)=>{
+                if(item.itemName==body.itemName && item.restaurantName== body.restaurantName){
+                    return item
+                }
+            })
+            cart.update({userEmail:userEmail},{items:updatedItems},(err,data)=>{
+                if(err){
+                    reject(err);
+                }
+                else{
+                    resolve(data);
+                }
+            });
+        })
+    })
+}
+
 module.exports = {
     getCartItems: getCartItems,
     saveCartItem:saveCartItem,
     getCartQuantity:getCartQuantity,
-    updateCartItemQunatity:updateCartItemQunatity
+    updateCartItemQunatity:updateCartItemQunatity,
+    removeItemInCart:removeItemInCart
 }

@@ -7,6 +7,7 @@ const restaurants=require("../controllers/restaurants.controller.js");
 const rest=require("../models/restaurants")
 const _= require("underscore");
 const cart = require('./../controllers/cart.controller');
+const payment = require('./../controllers/payment.controller');
 //user routes
 router.get("/",user.login);
 
@@ -24,8 +25,8 @@ router.use((req,res,next) => {
     }
 });
 //need to write fuction for this,not yet written
-router.get("/logout",user.logut);
-//restaurant routes
+router.get("/logout",user.logout);
+//restaurant routess
 router.get("/restaurants",restaurants.display);
 router.get("/restaurants/:restaurant",restaurants.itemsDisplay);
 
@@ -33,8 +34,10 @@ router.get("/restaurants/:restaurant",restaurants.itemsDisplay);
 router.post('/saveCartItem', cart.saveCartItem);
 router.get("/getCartItems",cart.getCartItems);
 router.get("/viewCartItems",cart.viewCartItems);
-router.post("/removeCartItem",cart.removeCartItem);
+
+router.post("/removeItemInCart",cart.removeItemInCart);
 router.post("/updateCartItemQuantity",cart.updateCartItemQuantity);
+router.post("/createPayment",payment.createPayment);
    
 
 module.exports=router

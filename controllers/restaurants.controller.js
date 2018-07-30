@@ -9,7 +9,7 @@ const display=(req,res)=>{
             if (_.isEmpty(restaurantsData)) {
                 res.send("no restaurants") // commit out after adding restaurants
             } else {
-                console.log(cartQuantity)
+                // console.log(cartQuantity)
                 res.render(path.join(__dirname, "../views/restaurants.handlebars"), {
                     restaurants: restaurantsData,
                     cartQuantity:cartQuantity,
@@ -20,11 +20,11 @@ const display=(req,res)=>{
             }
 
         }).catch((err) => {
-                    res.status(500).send("error in cart ");
+            res.status(500).send("error in cart ");
         })
         
     }).catch((err)=>{
-         res.status(500).send("error in restaurant");
+        res.status(500).send("error in restaurant");
     })
 }
 const itemsDisplay=(req,res)=>{
@@ -38,7 +38,10 @@ const itemsDisplay=(req,res)=>{
                 res.render(path.join(__dirname, "../views/items.handlebars"), {
                     items: data,
                     restaurantName:req.params.restaurant,
-                    cartQuantity:cartQuantity
+                    cartQuantity:cartQuantity,
+                    userEmail: req.session.email,
+                    username: req.session.username,
+                    userDisplayPicture: req.session.displayPictureUrl
                 })
 
             }

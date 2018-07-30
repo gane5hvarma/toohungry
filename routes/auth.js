@@ -47,12 +47,12 @@ router.get("/google/redirect",(req,res,next)=>{
         }
         else{
           if(req.user==="admin"){
-            console.log("im here in admin")
+            // console.log("im here in admin")
             req.session.admin="admin"
             res.redirect("/admin");
           }
           else{
-            console.log("im not in admin")
+            // console.log("im not in admin")
             res.redirect("/restaurants");
           }
         }
