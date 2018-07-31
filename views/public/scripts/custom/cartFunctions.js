@@ -54,3 +54,30 @@ $(document).ready(()=>{
    })
    $(".total_cartItemsCost").text(tota_cartItemsCost)
 })
+$('#confirm-button').on('click', function () {
+    var amount = $(".total_cartItemsCost").text();
+    console.log(amount)
+    $.post("http://localhost:3000/createPayment",{
+        amount:amount
+    })
+    .done((url)=>{
+        window.location=url
+        console.log(url)
+    })
+})
+$(".remove-item").click(function(e){
+    e.preventDefault();
+    var table_row = $(this).parent().parent()[0];
+    var itemName = table_row.children[1].textContent;
+    var restaurantName = table_row.children[2].textContent;
+    $.post("http://localhost:3000/removeItemIncart", {
+        itemName: itemName,
+        restaurantName: restaurantName,
+    }).done((data) => {
+        location.reload();
+    }).fail((err) => {
+        console.log(err);
+    });
+    
+     
+})

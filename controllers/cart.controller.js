@@ -22,15 +22,24 @@ const viewCartItems=(req,res)=>{
         cartHelper.getCartQuantity(req.session.email).then((cartQuantity) => {
            res.render(path.join(__dirname, "../views/cart.handlebars"),{
               cartItems:data.items,
-              cartQuantity:cartQuantity
+              cartQuantity:cartQuantity,
+              userEmail: req.session.email,
+              username: req.session.username,
+              userDisplayPicture: req.session.displayPictureUrl
             })
         }).catch((err)=>{
             res.send(err);
         })
     })
 }
-const removeCartItem=(req,res)=>{
-    res.send("sd")
+const removeItemInCart = (req, res) => {
+   
+    cartHelper.removeItemInCart(req.session.email,req.body).then((data)=>{
+        res.send("succes");
+    }).catch((err) => {
+        res.status(500).send(err);
+    })
+    
 
 }
 const updateCartItemQuantity=(req,res)=>{
@@ -45,6 +54,6 @@ module.exports = {
     getCartItems: getCartItems,
     saveCartItem:saveCartItem,
     viewCartItems:viewCartItems,
-    removeCartItem:removeCartItem,
+    removeItemInCart: removeItemInCart,
     updateCartItemQuantity:updateCartItemQuantity
 }

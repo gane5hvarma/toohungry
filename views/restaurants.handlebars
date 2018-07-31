@@ -10,6 +10,9 @@
         <link rel="stylesheet" type="text/css" href="http://localhost:3000/views/public/scripts/css-hamburgers/hamburgers.min.css">
         <link rel="stylesheet" type="text/css" href="http://localhost:3000/views/public/css/util.css">
         <link rel="stylesheet" type="text/css" href="http://localhost:3000/views/public/css/main.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
         <style>
             @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
@@ -107,17 +110,20 @@
                     <a href="index.html" class="logo">
                         <img src="http://localhost:3000/views/public/images/logo/logo.jpg" alt="IMG-LOGO">
                     </a>
-        
-                   
                     <div class="header-icons">
-                        <a href="#" class="header-wrapicon1 dis-block">
-                            <img src={{userDisplayPicture}} class="header-icon1" alt="ICON">
-                        </a>
+                        <div class="dropdown">
+                         <img src={{userDisplayPicture}} class="header-icon1" class="dropdown-toggle" data-toggle="dropdown" alt="ICON" style="border-radius:50%; height:32px;"> 
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="http://localhost:3000/logout">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
         
                         <span class="linedivide1"></span>
                         
                         <div class="header-wrapicon2">
-                            <img src="http://localhost:3000/views/public/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                            <img src="http://localhost:3000/views/public/images/icons/cart.png" class="header-icon1 js-show-header-dropdown" alt="ICON" style="border:3px;border-color:black;">
                             <span class="header-icons-noti">{{cartQuantity}}</span>
         
         
@@ -157,9 +163,14 @@
                 <div class="btn-show-menu">
                     <!-- Header Icon mobile -->
                     <div class="header-icons-mobile">
-                        <a href="#" class="header-wrapicon1 dis-block">
-                            <img src="public/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
-                        </a>
+                        <div class="dropdown">
+                            <img src={{userDisplayPicture}} class="header-icon1" class="dropdown-toggle" data-toggle="dropdown" alt="ICON" style="border-radius:50%; height:32px;">
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="http://localhost:3000/logout">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
         
                         <span class="linedivide2"></span>
         
