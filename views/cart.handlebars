@@ -100,7 +100,7 @@
 
                 <div class="header-wrapicon2">
                     <img src="./public/images/icons/cart.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-                    <span class="header-icons-noti">{{cartQuantity}}</span>
+                    <span class="header-icons-noti cartQuantity">{{cartQuantity}}</span>
 
                     <!-- Header cart noti -->
                     <div class="header-cart header-dropdown">
@@ -212,16 +212,24 @@
                         Subtotal:
                     </span>
     
-                    <span class="m-text21 w-size20 w-full-sm total_cartItemsCost">
+                    <span class="m-text21 w-size20 w-full-sm subtotal_cartItemsCost">
                         {{!-- cart items cost --}}
 
                     </span>
                     <span class="s-text18 w-size19 w-full-sm">
-                        Delivery cost:
+                        VAT:
                     </span>
                     
-                    <span class="m-text21 w-size20 w-full-sm total_DeliveryCost">
-                        {{!-- Total delivery cost --}}
+                    <span class="m-text21 w-size20 w-full-sm ">
+                        5%
+                    
+                    </span>
+                    <span class="s-text18 w-size19 w-full-sm ">
+                        Delivery
+                    </span>
+                    
+                    <span class="m-text21 w-size20 w-full-sm DeliveryCost">
+                        {{!-- Total delivery cost --}} 50
                     
                     </span>
                     
@@ -274,8 +282,8 @@
                         Total:
                     </span>
     
-                    <span class="m-text21 w-size20 w-full-sm">
-                        $39.00
+                    <span class="m-text21 w-size20 w-full-sm TotalItemsCost">
+                        
                     </span>
                 </div>
     

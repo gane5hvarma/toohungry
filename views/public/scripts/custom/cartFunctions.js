@@ -40,22 +40,30 @@ $('.btn-num-product-up').on('click', function (e) {
      });
 });
 $(document).ready(()=>{
-    var tota_cartItemsCost=0;
+    
+    var total_cartItemsCost=0;
    $(".total-item-cost").each((index,object)=>{
-       
        var table_row=object.parentElement.parentElement;
        var itemCost=table_row.children[3].textContent;
        var itemQuantity=table_row.children[4].children[0].children[1].attributes[2].textContent;
        var total_itemCost=itemCost*itemQuantity;
-       tota_cartItemsCost=tota_cartItemsCost+total_itemCost;
+       total_cartItemsCost=total_cartItemsCost+total_itemCost;
        $(".total-item-cost")[index].textContent=total_itemCost
        
        
    })
-   $(".total_cartItemsCost").text(tota_cartItemsCost)
+   $(".subtotal_cartItemsCost").text(total_cartItemsCost)
+   var cartQuantity = $(".cartQuantity").text()
+   if (cartQuantity > 0) {
+       var total = 50 + total_cartItemsCost + total_cartItemsCost * 5/100;
+           $(".TotalItemsCost").text(total);
+   }
+   else{
+       $(".TotalItemsCost").text("0");
+   }
 })
 $('#confirm-button').on('click', function () {
-    var amount = $(".total_cartItemsCost").text();
+    var amount = $(".TotalItemsCost").text();
     console.log(amount)
     $.post("./createPayment",{
         amount:amount
