@@ -9,7 +9,6 @@ const getCartItems = (req, res) => {
     })
 }
 const saveCartItem=(req,res)=>{
-    console.log(req.body)
     cartHelper.saveCartItem(req.body,req.session.email).then((data)=>{
         res.send(data);
     }).catch((err)=>{

@@ -19,8 +19,6 @@
 
             html,
             body {
-                -moz-box-sizing: border-box;
-                    box-sizing: border-box;
                 height: 100%;
                 width: 100%; 
                 background: #FFF;
@@ -32,8 +30,8 @@
                 
                 display: table;
                 width: 100%;
-                padding-top: 20px;
-                z-index: auto;
+                padding-top: 120px;
+                
             }
     
             }
@@ -105,10 +103,10 @@
             <div >
         
         
-                <div class="wrap_header">
+                <div class="wrap_header"style="z-index:100;">
                     <!-- Logo -->
-                    <a href="index.html" class="logo">
-                        <img src="http://localhost:3000/views/public/images/logo/logo.jpg" alt="IMG-LOGO">
+                    <a href="#" class="logo">
+                        <img src="./public/images/logo/logo.jpg" alt="IMG-LOGO">
                     </a>
                     <div class="header-icons">
                         <div class="dropdown">
@@ -123,7 +121,7 @@
                         <span class="linedivide1"></span>
                         
                         <div class="header-wrapicon2">
-                            <img src="http://localhost:3000/views/public/images/icons/cart.png" class="header-icon1 js-show-header-dropdown" alt="ICON" style="border:3px;border-color:black;">
+                            <img src="./public/images/icons/cart.png" class="header-icon1 js-show-header-dropdown" alt="ICON" style="border:3px;border-color:black;">
                             <span class="header-icons-noti">{{cartQuantity}}</span>
         
         
@@ -155,8 +153,8 @@
             <!-- Header Mobile -->
             <div class="wrap_header_mobile">
                 <!-- Logo moblie -->
-                <a href="index.html" class="logo-mobile">
-                    <img src="images/icons/logo.png" alt="IMG-LOGO">
+                <a href="#" class="logo-mobile">
+                    <img src="./public/images/logo/logo.jpg" alt="IMG-LOGO">
                 </a>
         
                 <!-- Button show menu -->
@@ -175,7 +173,7 @@
                         <span class="linedivide2"></span>
         
                         <div class="header-wrapicon2">
-                            <img src="public/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                            <img src="./public/images/icons/cart.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
                             <span class="header-icons-noti">{{cartQuantity}}</span>
         
                             <!-- Header cart noti -->
@@ -203,10 +201,10 @@
                     
                 </div>
             </div>
-            <section class="wrapper">
+           
+            <section class="wrapper" >
                 <div class="container-fostrap">
-            
-                    <div class="content" style="margin-top:100px;">
+                    <div class="content" >
                         <div class="container">
                             <div class="row">
                                 {{#each restaurants}}
