@@ -57,7 +57,7 @@ $(document).ready(()=>{
 $('#confirm-button').on('click', function () {
     var amount = $(".total_cartItemsCost").text();
     console.log(amount)
-    $.post("http://localhost:3000/createPayment",{
+    $.post("./createPayment",{
         amount:amount
     })
     .done((url)=>{
@@ -70,7 +70,7 @@ $(".remove-item").click(function(e){
     var table_row = $(this).parent().parent()[0];
     var itemName = table_row.children[1].textContent;
     var restaurantName = table_row.children[2].textContent;
-    $.post("http://localhost:3000/removeItemIncart", {
+    $.post("/removeItemIncart", {
         itemName: itemName,
         restaurantName: restaurantName,
     }).done((data) => {
