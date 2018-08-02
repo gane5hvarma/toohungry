@@ -69,7 +69,7 @@ $(".js-show-header-dropdown").each(function(){
                 }
                 $(this).parent().find('.header-dropdown').toggleClass('show-header-dropdown');
                 cart_status = 1;
-                console.log(cart_status)
+              
            
             })
         }
@@ -79,10 +79,7 @@ $(".js-show-header-dropdown").each(function(){
     })
 })
 $(document).click(()=>{
-   
     if (cart_status == 1 && counter % 2 == 1) {
-        console.log("in document")
-        console.log(cart_status)
         cart_status=0;
         counter=counter-1;
          $(".js-show-header-dropdown").parent().find('.header-dropdown').toggleClass('show-header-dropdown');
