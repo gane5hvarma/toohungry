@@ -147,11 +147,25 @@ const removeItemInCart=(userEmail,body)=>{
         })
     })
 }
+const deleteCart=(userEmail)=>{
+    return new Promise((resolve,reject)=>{
+        cart.deleteOne({userEmail:userEmail},(err)=>{
+            if(err){
+                reject(err);
+            }
+            else{
+                resolve("items deleted in cart")
+            }
+        })
+
+    })
+}
 
 module.exports = {
     getCartItems: getCartItems,
     saveCartItem:saveCartItem,
     getCartQuantity:getCartQuantity,
     updateCartItemQunatity:updateCartItemQunatity,
-    removeItemInCart:removeItemInCart
+    removeItemInCart:removeItemInCart,
+    deleteCart:deleteCart
 }

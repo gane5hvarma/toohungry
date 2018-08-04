@@ -74,6 +74,6 @@ app.listen(port,function(err){
     console.log(err)
     }
   else{
-    console.log("server is running at" + port)
+    console.log("server is running at : " + port)
   }
 });
