@@ -15,7 +15,7 @@ const createPayment=(req,res)=>{
         buyer_name: req.session.username,
         redirect_url: 'http://toohungry.in/orderSuccess',
         send_email: false,
-        webhook: 'http://tohungry.in/saveOrder',
+        webhook: 'http://toohungry.in/saveOrder',
         send_sms: false,
         email: req.session.email,
         allow_repeated_payments: false
