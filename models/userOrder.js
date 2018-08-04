@@ -2,15 +2,16 @@ var mongoose=require("mongoose");
 var Schema=mongoose.Schema
 var orderSchema=new Schema({
     itemName:String,
-    restaurant:String,
+    restaurantName:String,
     itemCost:Number,
     itemType:String,
-    itemImage:String
+    itemImage:String,
+    itemQuantity:Number
 
 })
 var userOrdersSchema=new Schema({
-    username:String,
-    emailId:String,
+    userName:String,
+    userEmail:String,
     mobile:Number,
     verfied:Boolean,
     date: {

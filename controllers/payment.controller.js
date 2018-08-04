@@ -4,6 +4,7 @@
 const request = require("request");
 
 const createPayment=(req,res)=>{
+    console.log(req.body)
     var headers = {
         'X-Api-Key': process.env.insta_key,
         'X-Auth-Token': process.env.insta_token
@@ -12,12 +13,13 @@ const createPayment=(req,res)=>{
         purpose: 'TooHungry',
         amount: req.body.amount,
         buyer_name: req.session.username,
-        redirect_url: 'http://localhost:3000/orderSuccess',
-        send_email: true,
-        // webhook: 'http://www.example.com/webhook/',
-        // send_sms: true,
+        redirect_url: 'http://toohungry.in/orderSuccess',
+        send_email: false,
+        webhook: 'http://tohungry.in/saveOrder',
+        send_sms: false,
         email: req.session.email,
-        allow_repeated_payments: false
+        allow_repeated_payments: false,
+        items:"asd"
     }
 
     request.post('https://www.instamojo.com/api/1.1/payment-requests/', {
@@ -27,12 +29,22 @@ const createPayment=(req,res)=>{
         
         if (!error && response.statusCode == 201) {
             var body=JSON.parse(body)
+            console.log(body)
             res.send(body.payment_request.longurl)
+        }
+        else{
+            console.log(response)
+            console.log("in error");
+            console.log(error);
         }
     })
 
 
 }
+const paymentSuccessDetails=(req,res)=>{
+    console.log(req.body);
+}
 module.exports={
-    createPayment:createPayment
+    createPayment:createPayment,
+    paymentSuccessDetails: paymentSuccessDetails
 }

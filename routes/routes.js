@@ -8,6 +8,7 @@ const rest=require("../models/restaurants")
 const _= require("underscore");
 const cart = require('./../controllers/cart.controller');
 const payment = require('./../controllers/payment.controller');
+const orders=require("../controllers/orders.controller");
 //user routes
 router.get("/",user.login);
 
@@ -37,7 +38,15 @@ router.get("/viewCartItems",cart.viewCartItems);
 
 router.post("/removeItemInCart",cart.removeItemInCart);
 router.post("/updateCartItemQuantity",cart.updateCartItemQuantity);
+//payment details
 router.post("/createPayment",payment.createPayment);
+router.post("/paymentSuccessDetails", payment.paymentSuccessDetails)
+
+//order routes
+router.get("/orders",orders.getOrders)
+// router.post("/saveOrder",orders.saveOrders);
+router.post("/saveOrder",orders.saveOrder);
+router.get("/orderSuccess",orders.orderSuccess)
    
 
 module.exports=router

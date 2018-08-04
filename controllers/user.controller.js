@@ -9,11 +9,21 @@ const login=(req,res)=>{
     }
 
     else{
-        res.status(200).sendFile(path.join(__dirname, "../views/public/home.html"));
-    } 
-}
+        if(req.session.error){
+             res.render(path.join(__dirname, "../views/public/home.handlebars"), {
+                 error: "login in through bits mail"
+             });
+
+            
+        }
+        else{
+            res.render(path.join(__dirname, "../views/public/home.handlebars"));
+            
+        }
+    }
+ }
 const logout=(req,res)=>{
-    console.log(req)
+    delete req.session.error;
     delete req.session.username;
     delete req.session.email;
     res.redirect("/");

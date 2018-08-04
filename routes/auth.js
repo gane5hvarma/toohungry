@@ -43,6 +43,7 @@ router.get("/google/redirect",(req,res,next)=>{
         req.session.email=req.user.email
         req.session.displayPictureUrl=req.user.displayPictureUrl
         if(req.user==="Not_BitsHyd"){
+          req.session.error=true;
           res.redirect("/");
         }
         else{
