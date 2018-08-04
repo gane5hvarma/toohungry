@@ -44,9 +44,9 @@ router.post("/paymentSuccessDetails", payment.paymentSuccessDetails)
 
 //order routes
 router.get("/orders",orders.getOrders)
-// router.post("/saveOrder",orders.saveOrders);
-router.post("/saveOrder",orders.saveOrder);
-router.get("/orderSuccess",orders.orderSuccess)
+router.get("/orderSuccess",orders.orderSuccess);
+
+router.post("/saveOrder", orders.saveOrder);
    
 
 module.exports=router
