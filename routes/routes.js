@@ -11,6 +11,7 @@ const payment = require('./../controllers/payment.controller');
 const orders=require("../controllers/orders.controller");
 //user routes
 router.get("/",user.login);
+router.post("/saveOrder", orders.saveOrder);
 
 //user handler what this does is it make sures only bits ppl can enter any route after /
 router.use((req,res,next) => {
@@ -44,9 +45,9 @@ router.post("/paymentSuccessDetails", payment.paymentSuccessDetails)
 
 //order routes
 router.get("/orders",orders.getOrders)
-// router.post("/saveOrder",orders.saveOrders);
-router.post("/saveOrder",orders.saveOrder);
-router.get("/orderSuccess",orders.orderSuccess)
+router.get("/orderSuccess",orders.orderSuccess);
+
+
    
 
 module.exports=router
