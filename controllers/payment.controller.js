@@ -18,8 +18,7 @@ const createPayment=(req,res)=>{
         webhook: 'http://tohungry.in/saveOrder',
         send_sms: false,
         email: req.session.email,
-        allow_repeated_payments: false,
-        items:"asd"
+        allow_repeated_payments: false
     }
 
     request.post('https://www.instamojo.com/api/1.1/payment-requests/', {

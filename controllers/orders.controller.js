@@ -9,11 +9,12 @@ const getOrders=(req,res)=>{
     res.send("uour orders are safe")
 }
 const saveOrder=(req,res)=>{
+    console.log("dasdasdasdsadsad")
     if(req.body.status=="Credit"){
-         cartHelper.getCartItems(req.session.email).then((cartItems) => {
-            ordersHelper.saveOrder(req.session.email, cartItems.items).then((data) => {
+         cartHelper.getCartItems(req.body.buyer).then((cartItems) => {
+            ordersHelper.saveOrder(req.body.buyer, cartItems.items).then((data) => {
                 console.log(cartItems.items)
-                res.redirect("/orders")
+                res.status(200).send("ok");
             }).catch((err) => {
                 res.status(500).send("error in converting cart to orders");
             })
