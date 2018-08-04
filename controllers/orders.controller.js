@@ -9,7 +9,7 @@ const getOrders=(req,res)=>{
     res.send("uour orders are safe")
 }
 const saveOrder=(req,res)=>{
-    console.log("dasdasdasdsadsad")
+    console.log(req.body)
     if(req.body.status=="Credit"){
          cartHelper.getCartItems(req.body.buyer).then((cartItems) => {
             ordersHelper.saveOrder(req.body.buyer, cartItems.items).then((data) => {
