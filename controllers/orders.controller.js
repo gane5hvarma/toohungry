@@ -8,7 +8,6 @@ const orderSuccess=(req,res)=>{
 const getOrders=(req,res)=>{
     ordersHelper.getOrder(req.session.email).then((data)=>{
         cartHelper.getCartQuantity(req.session.email).then((cartQuantity)=>{
-            console.log(data)
             res.render(path.join(__dirname, "../views/orders.handlebars"), {
                 orders: data.orders,
                 cartQuantity:cartQuantity,

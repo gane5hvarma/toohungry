@@ -6,6 +6,7 @@ var express=require("express")
 var User=require("../models/userLog.js")
 var credentials=require("./credentials.js")
 const moment=require("moment")
+const _=require("underscore");
 
 
 //google auth
@@ -14,8 +15,7 @@ passport.use(new googleStrategy({
   clientSecret: process.env.google_clientSecret || credentials.google.clientSecret,
   callbackURL: process.env.google_callbackURL || credentials.google.callbackURL
 },function(accessToken,refreshToken,profile,done){
-
-    if(profile._json.domain==="hyderabad.bits-pilani.ac.in"){
+    if(!_.isEmpty(profile._json)){
       if(profile.emails[0].value==="f20150284@hyderabad.bits-pilani.ac.in"){
         done(null,"admin");
       }
