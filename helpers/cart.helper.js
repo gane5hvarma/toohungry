@@ -9,6 +9,7 @@ const getCartItems = (userEmail) => {
         let query=cart.findOne({userEmail:userEmail})
         let promise=query.exec();
         promise.then((data)=>{
+            console.log(data)
             resolve(data);
         }).catch((err)=>{
             reject(err);
@@ -144,6 +145,8 @@ const removeItemInCart=(userEmail,body)=>{
                     resolve(data);
                 }
             });
+        }).catch((err)=>{
+            reject(err);
         })
     })
 }
@@ -160,6 +163,25 @@ const deleteCart=(userEmail)=>{
 
     })
 }
+const getCartItemsCost=(userEmail)=>{
+    return new Promise((resolve,reject)=>{
+        let query=cart.findOne({userEmail:userEmail});
+        let promise=query.exec();
+        promise.then((data)=>{
+            let cost=0;
+            _.each(data.items,(item)=>{
+                let costPerItem=item.itemQuantity * item.itemCost;
+                cost=cost+costPerItem;
+            })
+       
+            let totalCost=cost + 50 + cost/20 ;//charges including delivery charges 50 rs and gst - 5%
+
+            resolve(totalCost)
+        }).catch((err)=>{
+            reject(err);
+        })
+    })
+}
 
 module.exports = {
     getCartItems: getCartItems,
@@ -167,5 +189,6 @@ module.exports = {
     getCartQuantity:getCartQuantity,
     updateCartItemQunatity:updateCartItemQunatity,
     removeItemInCart:removeItemInCart,
-    deleteCart:deleteCart
+    deleteCart:deleteCart,
+    getCartItemsCost:getCartItemsCost
 }

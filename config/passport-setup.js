@@ -5,6 +5,7 @@ var mongodb=require("mongodb")
 var express=require("express")
 var User=require("../models/userLog.js")
 var credentials=require("./credentials.js")
+const moment=require("moment")
 
 
 //google auth
@@ -24,6 +25,7 @@ passport.use(new googleStrategy({
         if(user){
           
           user.count=user.count+1;
+          user.lastLoginDate=moment();
           user.save((err,updatedUser)=>{
             done(null,updatedUser)
           })

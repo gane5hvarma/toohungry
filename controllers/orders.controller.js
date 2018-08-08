@@ -6,8 +6,30 @@ const orderSuccess=(req,res)=>{
     res.redirect("/");    
 }
 const getOrders=(req,res)=>{
-    res.send("uour orders are safe")
+    ordersHelper.getOrder(req.session.email).then((data)=>{
+        cartHelper.getCartQuantity(req.session.email).then((cartQuantity)=>{
+            console.log(data)
+            res.render(path.join(__dirname, "../views/orders.handlebars"), {
+                orders: data.orders,
+                cartQuantity:cartQuantity,
+                userEmail: req.session.email,
+                username: req.session.username,
+                userDisplayPicture: req.session.displayPictureUrl
+            })
+
+
+        }).catch((err)=>{
+            res.status(500).send("error in fetching cart quantity");
+        })
+         
+    }).catch((err)=>{
+        res.status(500).send("error in fetching orders");
+    })
+   
+    
 }
+//change the logic for this controller
+
 const saveOrder=(req,res)=>{
     console.log(req.body)
     if(req.body.status=="Credit"){

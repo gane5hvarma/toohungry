@@ -1,12 +1,19 @@
 const mongoose=require("mongoose");
 const schema=mongoose.Schema;
+const moment =require("moment")
 const userLogSchema=new schema({
   username:String,
   googleId:String,
   email:String,
   displayPictureUrl:String,
   mobile:Number,
-  date:{type:Date,default:Date.now()},
+  firstLoginDate:{  type:Date,
+          default: moment()
+    },
+  lastLoginDate :{
+      type: Date,
+      default: moment()
+  },
   count:{type:Number,default:1}
 
 })
