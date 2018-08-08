@@ -1,5 +1,6 @@
 const cartHelper = require('./../helpers/cart.helper');
-const path=require("path")
+const path=require("path");
+const _ =require("underscore")
 
 const getCartItems = (req, res) => {
     cartHelper.getCartItems(req.session.email).then((data)=>{
@@ -18,6 +19,7 @@ const saveCartItem=(req,res)=>{
 
 const viewCartItems=(req,res)=>{
     cartHelper.getCartItems(req.session.email).then((data)=>{
+        if(!_.isEmpty(data)){   
         cartHelper.getCartQuantity(req.session.email).then((cartQuantity) => {
            res.render(path.join(__dirname, "../views/cart.handlebars"),{
               cartItems:data.items,
@@ -29,6 +31,22 @@ const viewCartItems=(req,res)=>{
         }).catch((err)=>{
             res.status(500).send("error in viewing cart items");
         })
+    }
+    else{
+         res.render(path.join(__dirname, "../views/cart.handlebars"), {
+             cartQuantity:0,
+             userEmail: req.session.email,
+             username: req.session.username,
+             userDisplayPicture: req.session.displayPictureUrl
+         })
+    }
+    }).catch((err)=>{
+         res.render(path.join(__dirname, "../views/cart.handlebars"), {
+             userEmail: req.session.email,
+             username: req.session.username,
+             userDisplayPicture: req.session.displayPictureUrl
+         })
+
     })
 }
 const removeItemInCart = (req, res) => {
