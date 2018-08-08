@@ -99,6 +99,12 @@
                     <img src={{userDisplayPicture}} class="header-icon1" class="dropdown-toggle" data-toggle="dropdown" alt="ICON" style="border-radius:50%; height:32px;">
                     <ul class="dropdown-menu">
                         <li>
+                            <a href="../restaurants">Restaurants</a>
+                        </li>
+                        <li>
+                            <a href="../orders">Orders</a>
+                        </li>
+                        <li>
                             <a href="../logout">Logout</a>
                         </li>
                     </ul>
@@ -134,14 +140,15 @@
             </div>
         </div>
     </div>
-    <div class="restaurant"><p>{{restaurantName}}</p></div>
+    <div class="restaurant"style="text-align:center;"><p style="font-size:50px;">{{restaurantName}}</p></div>
 
     <section class="bgwhite p-t-55 p-b-65">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
+                <div class="p-b-50">
+                     {{#each items}}
                     <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
-                        {{#each items}}
+                       
                       
                         <div class="block2">
                             <div class="block2-img wrap-pic-w of-hidden pos-relative">
@@ -170,8 +177,9 @@
                                 </span>
                             </div>
                         </div>
-                        {{/each}}
-                    </div>       
+                       
+                    </div>    
+                     {{/each}}
                 </div>
             </div>
         </div>

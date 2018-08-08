@@ -1,5 +1,6 @@
 var mongoose=require("mongoose");
 var Schema=mongoose.Schema
+const moment =require("moment")
 var orderSchema=new Schema({
     itemName:String,
     restaurantName:String,
@@ -13,10 +14,9 @@ var userOrdersSchema=new Schema({
     userName:String,
     userEmail:String,
     mobile:Number,
-    verfied:Boolean,
     date: {
         type: Date,
-        default: Date.now()
+        default: moment()
     },
     orders:[orderSchema]
 });

@@ -45,11 +45,13 @@ $(document).ready(()=>{
    $(".total-item-cost").each((index,object)=>{
        var table_row=object.parentElement.parentElement;
        var itemCost=table_row.children[3].textContent;
-       var itemQuantity=table_row.children[4].children[0].children[1].value;
+       console.log(itemCost)
+       console.log(table_row.children[4].children[0].children[0]);
+       var itemQuantity=table_row.children[4].children[0].children[0].textContent;
        var total_itemCost=itemCost*itemQuantity;
        total_cartItemsCost=total_cartItemsCost+total_itemCost;
        $(".total-item-cost")[index].textContent=total_itemCost
-       
+       console.log($("total-item-cost").text())
        
    })
    $(".subtotal_cartItemsCost").text(total_cartItemsCost)
@@ -64,7 +66,6 @@ $(document).ready(()=>{
 })
 $('#confirm-button').on('click', function () {
     var amount = $(".TotalItemsCost").text();
-    console.log(amount)
     $.post("./createPayment",{
         amount:amount
     })

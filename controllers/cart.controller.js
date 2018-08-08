@@ -27,7 +27,7 @@ const viewCartItems=(req,res)=>{
               userDisplayPicture: req.session.displayPictureUrl
             })
         }).catch((err)=>{
-            res.send(err);
+            res.status(500).send("error in viewing cart items");
         })
     })
 }

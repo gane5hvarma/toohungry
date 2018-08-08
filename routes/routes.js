@@ -41,7 +41,7 @@ router.post("/removeItemInCart",cart.removeItemInCart);
 router.post("/updateCartItemQuantity",cart.updateCartItemQuantity);
 //payment details
 router.post("/createPayment",payment.createPayment);
-router.post("/paymentSuccessDetails", payment.paymentSuccessDetails)
+// router.post("/paymentSuccessDetails", payment.paymentSuccessDetails)
 
 //order routes
 router.get("/orders",orders.getOrders)
