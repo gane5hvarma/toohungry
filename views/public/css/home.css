@@ -45,11 +45,21 @@ body {
 @media screen and (max-width:700px) {
   .google-signin {
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 20%;
   }
   #logo {
     height: 90%;
     width: 80%;
   }
+  @media screen and (max-width:500px) {
+    .google-signin {
+      position: absolute;
+      top: 50%;
+      left: 20%;
+    }
+    #logo {
+      height: 90%;
+      width: 80%;
+    }
 }
