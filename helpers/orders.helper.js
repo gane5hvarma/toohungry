@@ -36,7 +36,7 @@ const saveOrder=(data,cartItems)=>{
                      userName:data.buyer_name,
                      mobile:data.buyer_phone,
                      payment_id:data.payment_id,
-                     payment_request_id:payment_request_id,
+                     payment_request_id:data.payment_request_id,
                      amount:data.amount,
                      feesChargedByInsta:data.fees,
                      orders: cartItems
