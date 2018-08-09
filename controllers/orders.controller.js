@@ -30,9 +30,8 @@ const getOrders=(req,res)=>{
 //change the logic for this controller
 
 const saveOrder=(req,res)=>{
-    console.log(req.body)
     if(req.body.status=="Credit"){
-         cartHelper.getCartItems(req.body.buyer).then((cartItems) => {
+         cartHelper.getCartItems(req.body).then((cartItems) => {
             ordersHelper.saveOrder(req.body.buyer, cartItems.items).then((data) => {
                 console.log(cartItems.items)
                 res.status(200).send("ok");
