@@ -31,8 +31,9 @@ const getOrders=(req,res)=>{
 
 const saveOrder=(req,res)=>{
     if(req.body.status=="Credit"){
-         cartHelper.getCartItems(req.body).then((cartItems) => {
-            ordersHelper.saveOrder(req.body.buyer, cartItems.items).then((data) => {
+        console.log(req.body)
+         cartHelper.getCartItems(req.body.buyer).then((cartItems) => {
+            ordersHelper.saveOrder(req.body, cartItems.items).then((data) => {
                 console.log(cartItems.items)
                 res.status(200).send("ok");
             }).catch((err) => {
