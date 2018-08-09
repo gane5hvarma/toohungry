@@ -10,7 +10,7 @@ const getCartItems = (req, res) => {
     })
 }
 const saveCartItem=(req,res)=>{
-    cartHelper.saveCartItem(req.body,req.session.email).then((data)=>{
+    cartHelper.saveCartItem(req.body,req.session.email,req.session.username).then((data)=>{
         res.send(data);
     }).catch((err)=>{
         res.status(500).send(err);
