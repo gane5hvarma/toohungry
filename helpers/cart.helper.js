@@ -17,7 +17,7 @@ const getCartItems = (userEmail) => {
     })
 }
 
-const saveCartItem = (cartItem,userEmail) => {
+const saveCartItem = (cartItem,userEmail,userName) => {
     return new Promise((resolve, reject) => {
         let restaurantQuery=restaurant.findOne({name:cartItem.restaurantName});
         let promise=restaurantQuery.exec();
@@ -39,7 +39,7 @@ const saveCartItem = (cartItem,userEmail) => {
                             let cartItems=[]
                             cartItemData.itemQuantity=1;
                             cartItems.push(cartItemData);
-                            new cart({userEmail:userEmail,userName:req.session.userName,items:cartItems}).save((err,data)=>{
+                            new cart({userEmail:userEmail,userName:userName,items:cartItems}).save((err,data)=>{
                                 if(err){
                                     reject(err);
                                 }
