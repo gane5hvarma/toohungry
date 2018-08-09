@@ -13,7 +13,7 @@ const cartItemSchema = new Schema({
 });
 const cartSchema=new Schema({
     userEmail:String,
-    userName:String
+    userName:String,
     items:[cartItemSchema]
 })
 const cartModel = mongoose.model('userCart', cartSchema);
