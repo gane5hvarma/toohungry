@@ -39,7 +39,7 @@ const saveCartItem = (cartItem,userEmail) => {
                             let cartItems=[]
                             cartItemData.itemQuantity=1;
                             cartItems.push(cartItemData);
-                            new cart({userEmail:userEmail,items:cartItems}).save((err,data)=>{
+                            new cart({userEmail:userEmail,userName:req.session.userName,items:cartItems}).save((err,data)=>{
                                 if(err){
                                     reject(err);
                                 }

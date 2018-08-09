@@ -14,6 +14,10 @@ var userOrdersSchema=new Schema({
     userName:String,
     userEmail:String,
     mobile:Number,
+    payment_id:String,
+    payment_request_id:String,
+    amount:String,
+    feesChargedByInsta:String,
     date: {
         type: Date,
         default: moment()

@@ -3,9 +3,9 @@ const ordersModel=require("../models/userOrder");
 const cartHelper=require("../helpers/cart.helper");
 const moment=require("moment");
 //change url of this route
-const saveOrder=(userEmail,cartItems)=>{
+const saveOrder=(data,cartItems)=>{
     return new Promise((resolve,reject)=>{
-        let query=ordersModel.find({userEmail:userEmail});
+        let query=ordersModel.find({userEmail:data.buyer});
         let promise=query.exec()
         promise.then((orders)=>{
              let todaysOrder = _.find(orders, (order) => {
@@ -32,7 +32,13 @@ const saveOrder=(userEmail,cartItems)=>{
             }
             else{
                  const orders = new ordersModel({
-                     userEmail: userEmail,
+                     userEmail: data.buyer,
+                     userName:data.buyer_name,
+                     mobile:data.buyer_phone,
+                     payment_id:data.payment_id,
+                     payment_request_id:payment_request_id,
+                     amount:data.amount,
+                     feesChargedByInsta:data.fees,
                      orders: cartItems
                  })
                  cartHelper.deleteCart(userEmail).then((data) => {
