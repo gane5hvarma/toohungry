@@ -5,7 +5,7 @@ const moment=require("moment");
 //change url of this route
 const saveOrder=(data,cartItems)=>{
     return new Promise((resolve,reject)=>{
-        userEmail=data.buyer;
+        const userEmail=data.buyer;
         let query=ordersModel.find({userEmail:data.buyer});
         let promise=query.exec()
         promise.then((orders)=>{
