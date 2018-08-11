@@ -66,6 +66,7 @@ $(document).ready(()=>{
        }
        var total = deliveryCost + total_cartItemsCost + total_cartItemsCost * 5/100;
            $(".TotalItemsCost").text(total);
+           $(".DeliveryCost").text(deliveryCost);
    }
    else{
        $(".TotalItemsCost").text("0");
