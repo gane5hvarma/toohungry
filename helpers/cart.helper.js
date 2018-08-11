@@ -167,14 +167,25 @@ const getCartItemsCost=(userEmail)=>{
     return new Promise((resolve,reject)=>{
         let query=cart.findOne({userEmail:userEmail});
         let promise=query.exec();
+        let defaultDeliveryCost=50;
+        let deliveryCostThroughItemsCost=
         promise.then((data)=>{
             let cost=0;
             _.each(data.items,(item)=>{
                 let costPerItem=item.itemQuantity * item.itemCost;
                 cost=cost+costPerItem;
             })
+            let deliveryCost=0;
+            let defaultDeliveryCost = 50;
+            let deliveryCostThroughItemsCost =cost*8/100;
+            if(defaultDeliveryCost>=deliveryCostThroughItemsCost){
+                deliveryCost=defaultDeliveryCost;
+            }
+            else{
+                deliveryCost=deliveryCostThroughItemsCost;
+            }
        
-            let totalCost=cost + 50 + cost/20 ;//charges including delivery charges 50 rs and gst - 5%
+            let totalCost=cost + deliveryCost + cost/20 ;//charges including delivery charges 50 rs and gst - 5%
 
             resolve(totalCost)
         }).catch((err)=>{

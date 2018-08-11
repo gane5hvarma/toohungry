@@ -55,7 +55,16 @@ $(document).ready(()=>{
    $(".subtotal_cartItemsCost").text(total_cartItemsCost)
    var cartQuantity = $(".cartQuantity").text()
    if (cartQuantity > 0) {
-       var total = 50 + total_cartItemsCost + total_cartItemsCost * 5/100;
+       var defaultDeliveryCost=50;
+       var deliveryCostOfItems=total_cartItemsCost*8/100;
+       var deliveryCost=0;
+       if(defaultDeliveryCost>=deliveryCostOfItems){
+           deliveryCost=defaultDeliveryCost;
+       }
+       else{
+           deliveryCost=deliveryCostOfItems;
+       }
+       var total = deliveryCost + total_cartItemsCost + total_cartItemsCost * 5/100;
            $(".TotalItemsCost").text(total);
    }
    else{
