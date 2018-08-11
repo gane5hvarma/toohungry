@@ -5,7 +5,6 @@ const moment=require("moment");
 //change url of this route
 const saveOrder=(data,cartItems)=>{
     return new Promise((resolve,reject)=>{
-        console.log(data)
         const userEmail=data.buyer;
         let query=ordersModel.find({userEmail:data.buyer});
         let promise=query.exec()
@@ -18,8 +17,9 @@ const saveOrder=(data,cartItems)=>{
                 _.forEach(cartItems,(cartItem)=>{
                     todaysOrderArray.push(cartItem);
                 })
+                todaysOrder.amount=todaysOrder.amount+data.amount;
                  cartHelper.deleteCart(userEmail).then((data) => {
-                     ordersModel.update({userEmail:userEmail},{orders:todaysOrderArray},(err) => {
+                     ordersModel.update({userEmail:userEmail},{amount:todaysOrder.amount,orders:todaysOrderArray},(err) => {
                          if (err) {
                              reject(err)
                          } else {
