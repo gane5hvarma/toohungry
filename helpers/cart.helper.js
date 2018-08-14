@@ -185,9 +185,10 @@ const getCartItemsCost=(userEmail)=>{
                 deliveryCost=deliveryCostThroughItemsCost;
             }
        
-            let totalCost=cost + deliveryCost + cost/20 ;//charges including delivery charges 50 rs and gst - 5%
+            let totalCost=cost + Math.round(deliveryCost) + Math.round(cost/20) ;//charges including delivery charges 50 rs and gst - 5%
 
-            resolve(totalCost)
+
+            resolve(Math.round(totalCost))
         }).catch((err)=>{
             reject(err);
         })

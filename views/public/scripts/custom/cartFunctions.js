@@ -64,9 +64,9 @@ $(document).ready(()=>{
        else{
            deliveryCost=deliveryCostOfItems;
        }
-       var total = deliveryCost + total_cartItemsCost + total_cartItemsCost * 5/100;
-           $(".TotalItemsCost").text(total);
-           $(".DeliveryCost").text(deliveryCost);
+       var total = Math.round(deliveryCost) + total_cartItemsCost + Math.round(total_cartItemsCost * 5/100);
+           $(".TotalItemsCost").text(Math.round(total));
+           $(".DeliveryCost").text(Math.round(deliveryCost));
    }
    else{
        $(".TotalItemsCost").text("0");
