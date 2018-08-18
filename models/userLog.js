@@ -7,12 +7,11 @@ const userLogSchema=new schema({
   email:String,
   displayPictureUrl:String,
   mobile:Number,
-  firstLoginDate:{  type:Date,
-          default: moment()
+  firstLoginDate:{  
+      type:Date
     },
   lastLoginDate :{
-      type: Date,
-      default: moment()
+      type: Date
   },
   count:{type:Number,default:1}
 

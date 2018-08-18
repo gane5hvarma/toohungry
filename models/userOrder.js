@@ -19,8 +19,7 @@ var userOrdersSchema=new Schema({
     amount:String,
     feesChargedByInsta:String,
     date: {
-        type: Date,
-        default: moment()
+        type: Date
     },
     orders:[orderSchema]
 });
