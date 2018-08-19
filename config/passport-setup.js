@@ -36,7 +36,8 @@ passport.use(new googleStrategy({
             googleId:profile.id,
             email:profile.emails[0].value,
             displayPictureUrl:profile.photos[0].value,
-            date:new Date()
+            firstLoginDate:moment(),
+            lastLoginDate:moment()
           }).save().then(function(newUser){
             done(null,newUser)
           })
