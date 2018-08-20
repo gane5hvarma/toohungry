@@ -167,8 +167,6 @@ const getCartItemsCost=(userEmail)=>{
     return new Promise((resolve,reject)=>{
         let query=cart.findOne({userEmail:userEmail});
         let promise=query.exec();
-        let defaultDeliveryCost=50;
-        let deliveryCostThroughItemsCost=
         promise.then((data)=>{
             let cost=0;
             _.each(data.items,(item)=>{
@@ -176,7 +174,7 @@ const getCartItemsCost=(userEmail)=>{
                 cost=cost+costPerItem;
             })
             let deliveryCost=0;
-            let defaultDeliveryCost = 50;
+            let defaultDeliveryCost = 35;
             let deliveryCostThroughItemsCost =cost*8/100;
             if(defaultDeliveryCost>=deliveryCostThroughItemsCost){
                 deliveryCost=defaultDeliveryCost;

@@ -57,7 +57,7 @@ $(document).ready(() => {
     $(".subtotal_cartItemsCost").text(total_cartItemsCost)
     var cartQuantity = $(".cartQuantity").text()
     if (cartQuantity > 0) {
-        var total = 50 + total_cartItemsCost + total_cartItemsCost * 5 / 100;
+        var total = 35 + total_cartItemsCost + total_cartItemsCost * 5 / 100;
         $(".TotalItemsCost").text(total);
     } else {
         $(".TotalItemsCost").text("0");

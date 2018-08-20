@@ -55,7 +55,7 @@ $(document).ready(()=>{
    $(".subtotal_cartItemsCost").text(total_cartItemsCost)
    var cartQuantity = $(".cartQuantity").text()
    if (cartQuantity > 0) {
-       var defaultDeliveryCost=50;
+       var defaultDeliveryCost=35;
        var deliveryCostOfItems=total_cartItemsCost*8/100;
        var deliveryCost=0;
        if(defaultDeliveryCost>=deliveryCostOfItems){
