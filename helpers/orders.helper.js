@@ -41,6 +41,7 @@ const saveOrder=(data,cartItems)=>{
                      payment_request_id:data.payment_request_id,
                      amount:data.amount,
                      feesChargedByInsta:data.fees,
+                     date:moment(),
                      orders: cartItems
                  })
                  cartHelper.deleteCart(userEmail).then((data) => {
