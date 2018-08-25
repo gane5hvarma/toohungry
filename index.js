@@ -17,7 +17,16 @@ app.use(express.static(__dirname))
 app.use(express.static(path.join(__dirname,"views")))
 app.use(express.static(path.join(__dirname, "views/public")))
 
+//logs 
+const morgan=require("morgan");
+const fs=require("fs");
 
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'requests.log'), {
+  flags: 'a'
+})
+app.use(morgan('combined', {
+  stream: accessLogStream
+}))
 
 //view engine handlebars
 var hbs=require("express-handlebars")
